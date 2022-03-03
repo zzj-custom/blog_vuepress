@@ -1,10 +1,13 @@
 // 插件配置
 module.exports = [
   // 本地插件
-  // [require('./plugins/love-me'), { // 鼠标点击爱心特效
-  //   color: '#11a8cd', // 爱心颜色，默认随机色
-  //   excludeClassName: 'theme-vdoing-content' // 要排除元素的class, 默认空''
-  // }],
+  [
+    require('../plugins/love-me'),
+    { // 鼠标点击爱心特效
+      color: '#11a8cd', // 爱心颜色，默认随机色
+      excludeClassName: 'theme-vdoing-content' // 要排除元素的class, 默认空''
+    }
+  ],
 
   'vuepress-plugin-baidu-autopush', // 百度自动推送
 
@@ -93,8 +96,7 @@ module.exports = [
         id: '<%- (frontmatter.permalink || frontmatter.to.path).slice(-16) %>', //  页面的唯一标识,长度不能超过50
         title: '「评论」<%- frontmatter.title %>', // GitHub issue 的标题
         labels: ['Gitalk', 'Comment'], // GitHub issue 的标签
-        body:
-          '页面：<%- window.location.origin + (frontmatter.to.path || window.location.pathname) %>', // GitHub issue 的内容
+        body: '页面：<%- window.location.origin + (frontmatter.to.path || window.location.pathname) %>', // GitHub issue 的内容
       },
     },
   ],

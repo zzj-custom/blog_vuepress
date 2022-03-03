@@ -5,7 +5,7 @@ module.exports = {
   '/01.前端/': [
     {
       title: 'JavaScript',
-      collapsable: false, //是否可折叠，可选的，默认true
+      collapsable: true, //是否可折叠，可选的，默认true
       children: [
         ['01.JavaScript/01.JavaScript中的名词概念','JavaScript中的名词概念'],
         ['01.JavaScript/02.数据类型转换','数据类型转换'],
