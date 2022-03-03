@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  vuepress:
+    restart: always
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: vuepress
+    environment:
+      - "APP_ENV=local"
+    ports:
+      - 8080:8080
+      - 80:80
+      - 443:443
+    logging:
+      options:
+        max-size: '128M'
+        max-file: '5'
+      driver: json-file

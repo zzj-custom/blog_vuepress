@@ -40,3 +40,19 @@ jobs:
           remote_port: 22
           remote_user: root
           remote_key: ${{ secrets.TOKEN }}
+      #执行命令
+      - name: execute shell
+        uses: appleboy/ssh-action@master
+        with:
+          host: 49.232.222.252
+          username: root
+          key: ${{ secrets.TOKEN }}
+          port: 22
+          script: |
+            # 删除运行的容器
+            docker stop $(docker ps -qa --filter name=vuepress)
+            docker rm $(docker ps -qa --filter name=vuepress)
+            # 构建
+            cd /var/www/blog_vuepress
+            docker-compose down
+            docker-compose up -d
