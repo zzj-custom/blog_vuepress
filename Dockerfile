@@ -23,7 +23,10 @@ FROM nginx:1.18
 COPY --from=build /var/www/blog_vuepress/docs/.vuepress/dist /var/www/blog_vuepress
 COPY --from=build /var/www/blog_vuepress/nginx.conf /etc/nginx/conf.d/
 
-RUN echo -e "\033[42;37m Nginx copy Completed :).\033[0m\n"
+RUN set -ex \
+  # 去掉默认的80端口，删除点默认的default.conf
+  && rm -rf /etc/nginx/conf.d/default.conf \
+  && echo -e "\033[42;37m Nginx copy Completed :).\033[0m\n"
 
 WORKDIR /var/www/blog_vuepress
 
