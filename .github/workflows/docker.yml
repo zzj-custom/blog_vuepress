@@ -52,7 +52,7 @@ jobs:
             # 删除运行的容器
             docker stop $(docker ps -qa --filter name=vuepress)
             docker rm $(docker ps -qa --filter name=vuepress)
-            # 构建测试
+            # 构建
             cd /var/www/blog_vuepress
             docker-compose down
             docker-compose build --no-cache
